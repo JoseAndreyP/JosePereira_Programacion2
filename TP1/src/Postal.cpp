@@ -45,6 +45,8 @@ double Postal::enviar(){
                     costo=distancia*0.0160;
                 case 3:
                     costo=distancia*0.0170;
+        }
     }
+    
     return costo;
 }
