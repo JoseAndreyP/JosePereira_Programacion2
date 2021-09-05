@@ -4,52 +4,24 @@
 #include "../src/Fedex.h"
 
 namespace {
-    TEST(FedexTests, FedexTest_ToString_Test) {
-        Fedex envio = envio(2.9,1,200);
-        std::string total = envio.ToString();
-        EXPECT_EQ("(39)", total);
+    TEST(FedexTest, FedexTest_ToString_Test) {
+        Fedex envio = Fedex(2,200);
+        double total = envio.enviar();
+        EXPECT_EQ(20.0, total);
     }
-    TEST(FedexTests, FedexTest_ToString_Test) {
-        Fedex envio = envio(4.9,1,200);
-        std::string total = envio.ToString();
-        EXPECT_EQ("(90)", total);
+    TEST(FedexTest, FedexTest_ToString_Test) {
+        Fedex envio = Fedex(4.9,200);
+        double total = envio.enviar();
+        EXPECT_EQ(23.0, total);
     }
-    TEST(FedexTests, FedexTest_ToString_Test) {
-        Fedex envio = envio(11.25,1,200);
-        std::string total = envio.ToString();
-        EXPECT_EQ("(100)", total);
+    TEST(FedexTest, FedexTest_ToString_Test) {
+        Fedex envio = Fedex(4.8,500);
+        double total = envio.enviar();
+        EXPECT_EQ(28.0, total);
     }
-    TEST(FedexTests, FedexTest_ToString_Test) {
-        Fedex envio = envio(2.9,2,200);
-        std::string total = envio.ToString();
-        EXPECT_EQ("(3.9)", total);
+    TEST(FedexTest, FedexTest_ToString_Test) {
+        Fedex envio = Fedex(2.2,200);
+        double total = envio.enviar();
+        EXPECT_EQ(25.0, total);
     }
-    TEST(FedexTests, FedexTest_ToString_Test) {
-        Fedex envio = envio(4.9,2,200);
-        std::string total = envio.ToString();
-        EXPECT_EQ("(9)", total);
-    }
-    TEST(FedexTests, FedexTest_ToString_Test) {
-        Fedex envio = envio(11.25,2,200);
-        std::string total = envio.ToString();
-        EXPECT_EQ("(10)", total);
-    }
-    TEST(FedexTests, FedexTest_ToString_Test) {
-        Fedex envio = envio(2.9,3,200);
-        std::string total = envio.ToString();
-        EXPECT_EQ("(3)", total);
-    }
-    TEST(FedexTests, FedexTest_ToString_Test) {
-        Fedex envio = envio(4.9,3,200);
-        std::string total = envio.ToString();
-        EXPECT_EQ("(3.2)", total);
-    }
-    TEST(FedexTests, FedexTest_ToString_Test) {
-        Fedex envio = envio(11.25,3,200);
-        std::string total = envio.ToString();
-        EXPECT_EQ("(3.4)", total);
-    }
-    
-
-
 }

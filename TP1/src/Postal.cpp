@@ -8,6 +8,7 @@ Postal::Postal(double peso, int clase, int distancia){
 
 double Postal::enviar(){
     int tipoPeso;
+    double costo;
     if(peso<4){
         tipoPeso=1;
     }
@@ -21,24 +22,29 @@ double Postal::enviar(){
         case 1:
             switch(tipoPeso){
                 case 1:
-
+                    costo=distancia*0.195;
                 case 2:
+                    costo=distancia*0.450;
                 case 3:
+                    costo=distancia*0.500;
     }
         case 2:
             switch(tipoPeso){
                 case 1:
-            
+                    costo=distancia*0.0195;
                 case 2:
+                    costo=distancia*0.0450;
                 case 3:
+                    costo=distancia*0.05;
             }
         case 3:
             switch(tipoPeso){
                 case 1:
-            
+                    costo=distancia*0.0150;
                 case 2:
+                    costo=distancia*0.0160;
                 case 3:
-
+                    costo=distancia*0.0170;
     }
-    
+    return costo;
 }
