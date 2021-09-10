@@ -13,5 +13,6 @@ double Fedex::enviar(){
     if(this->peso>4.0){
         costo+=3.0;
     }
+    delete this;
     return costo;
 }

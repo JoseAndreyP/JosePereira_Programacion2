@@ -14,8 +14,10 @@ int main(){
     std::vector<Envio *> arregloEnvios;
 
     while(continuar==1){
+        
         std::cout<<"Digite el tipo de envio que desea"<<std::endl<<"1.ServicioPostal"<<std::endl<<"2.Fedex"<<std::endl;
         std::cin>>tipo;
+        
         switch(tipo){
             case 1:{
                 while((clase<1)||(clase>3)){
