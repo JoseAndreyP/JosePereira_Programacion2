@@ -1,11 +1,12 @@
 #include"Postal.h"
 
+//Creador con parametros del objeto postal.
 Postal::Postal(double peso, int clase, int distancia){
     this->distancia=distancia;
     this->peso=peso;
     this->clase=clase; //Se limitara la clase en el main para que solo pueda ser 1,2 o 3
 }
-
+//Metodo que calcula el costo del envio de acuerdo a varios casos de parametros.
 double Postal::enviar(){
     int tipoPeso;
     double costo;
@@ -18,6 +19,8 @@ double Postal::enviar(){
     else if(peso<4){
         tipoPeso=3;
     }
+
+
     switch(clase){
         case 1:
             switch(tipoPeso){
@@ -30,7 +33,8 @@ double Postal::enviar(){
                 case 3:
                     costo=distancia*0.195;
                     break;
-    }break;
+            }
+        break;    
         case 2:
             switch(tipoPeso){
                 case 1:
@@ -42,7 +46,8 @@ double Postal::enviar(){
                 case 3:
                     costo=distancia*0.0195;
                     break;
-            }break;
+            }
+        break;
         case 3:
             switch(tipoPeso){
                 case 1:
@@ -54,8 +59,8 @@ double Postal::enviar(){
                 case 3:
                     costo=distancia*0.0150;
                     break;
-        }break;
-    }
-    delete this;
+            }
+        break;
+    }   
     return costo;
 }

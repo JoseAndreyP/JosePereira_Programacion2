@@ -1,7 +1,7 @@
 #ifndef _FedexJose_
 #define _FedexJose_
 #include "Envio.h"
-
+//Clase del servicio de envio Fedex
 class Fedex: public Envio{
     private:
         int distancia;
@@ -9,9 +9,5 @@ class Fedex: public Envio{
     public:
         Fedex(double, int);
         virtual double enviar();
-        void setDistancia(int);
-        void setPeso(double);
-        int getDistancia();
-        double getPeso();
 };
 #endif
