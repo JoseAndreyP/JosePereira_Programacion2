@@ -15,7 +15,7 @@ EscritorBinario::EscritorBinario(string nombre) {
 }
 istream& EscritorBinario::cargarPersonas(istream& i){
     ifstream archivoEntrada;
-    archivoEntrada.open("personas.txt", ios::in);
+    archivoEntrada.open("../obj/personas.txt", ios::in);
 
     if (!archivoEntrada.is_open())
     {
