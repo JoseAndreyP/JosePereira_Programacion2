@@ -19,3 +19,8 @@ Persona::Persona() {
     strcpy(this->apellido, "");
     strcpy(this->correo, "");
 }
+
+string Persona::ObtenerInformacion(){
+    string informacion= (char)id +" "+ (string)nombre +" "+ (string)apellido + " "+(string)correo;
+    return informacion;
+}

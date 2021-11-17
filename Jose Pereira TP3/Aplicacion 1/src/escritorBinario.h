@@ -14,9 +14,10 @@ class EscritorBinario {
 
     public:
     EscritorBinario(std::string nombre);
-    istream& cargarPersonas(istream&);
+    istream& cargarPersonas(istream&,string);
     void EscribirTexto();
     void AgregarPersona(Persona &Persona);
+    Persona obtenerPersona(int posicion);
     void Cerrar();
 
 };

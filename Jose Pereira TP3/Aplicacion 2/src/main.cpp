@@ -9,9 +9,7 @@ int main() {
 
     LectorBinario lector("personas.dat");
 
-    lector.buscarPersona("Angela");
-
-    lector.buscarPersona(22);
+    Persona personabuscada= lector.buscarPersonaPosicion(1);
     
     return 0;
 
