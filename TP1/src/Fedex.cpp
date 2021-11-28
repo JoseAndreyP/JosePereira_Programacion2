@@ -5,7 +5,7 @@ Fedex::Fedex(double peso, int distancia){
     this->peso=peso;
 }
 //Método que calcula el costo del envío
-double Fedex::enviar(){
+double Fedex::calcularCosto(){
     double costo=20.0;
     if(this->distancia>500){
         costo+=5.0;
@@ -13,6 +13,5 @@ double Fedex::enviar(){
     if(this->peso>4.0){
         costo+=3.0;
     }
-    delete this;
     return costo;
 }

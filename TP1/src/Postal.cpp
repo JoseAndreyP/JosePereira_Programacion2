@@ -7,7 +7,7 @@ Postal::Postal(double peso, int clase, int distancia){
     this->clase=clase; //Se limitara la clase en el main para que solo pueda ser 1,2 o 3
 }
 //Metodo que calcula el costo del envio de acuerdo a varios casos de parametros.
-double Postal::enviar(){
+double Postal::calcularCosto(){
     int tipoPeso;
     double costo;
     if(peso>9){

@@ -5,7 +5,7 @@ class Envio {
     protected:
         Envio() {}
     public:
-        virtual double enviar()=0; // Metodo virtual puro
+        virtual double calcularCosto()=0; // Metodo virtual puro
 };
 
 #endif

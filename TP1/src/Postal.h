@@ -9,6 +9,7 @@ class Postal: public Envio{
         double peso;
     public:
         Postal(double, int, int);
-        virtual double enviar();
+        virtual double calcularCosto();
+
 };
 #endif

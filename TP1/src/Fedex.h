@@ -8,6 +8,6 @@ class Fedex: public Envio{
         double peso;
     public:
         Fedex(double, int);
-        virtual double enviar();
+        virtual double calcularCosto();
 };
 #endif

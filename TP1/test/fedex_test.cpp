@@ -4,7 +4,7 @@
 namespace {
     TEST(FedexTest, FedexTest_Enviando_Test2_2000) {
         Fedex envio = Fedex(2,200);
-        double total = envio.enviar();
+        double total = envio.calcularCosto();
         double expected=20.0;
         double diferencia= std:: abs (total-expected);
         bool aceptable= diferencia<0.00001;
@@ -12,23 +12,23 @@ namespace {
     }
     TEST(FedexTest, FedexTest_Enviando_Test4_200) {
         Fedex envio = Fedex(4.9,200);
-        double total = envio.enviar();
+        double total = envio.calcularCosto();
         double expected=23.0;
         double diferencia= std:: abs (total-expected);
         bool aceptable= diferencia<0.00001;
         EXPECT_EQ(true, aceptable);
     }
     TEST(FedexTest, FedexTest_Enviando_Test4_500) {
-        Fedex envio = Fedex(4.8,500);
-        double total = envio.enviar();
+        Fedex envio = Fedex(4.8,600);
+        double total = envio.calcularCosto();
         double expected=28.0;
         double diferencia= std:: abs (total-expected);
         bool aceptable= diferencia<0.00001;
         EXPECT_EQ(true, aceptable);
     }
     TEST(FedexTest, FedexTest_Enviando_Test2_200) {
-        Fedex envio = Fedex(2.2,200);
-        double total = envio.enviar();
+        Fedex envio = Fedex(2.2,600);
+        double total = envio.calcularCosto();
         double expected=25.0;
         double diferencia= std:: abs (total-expected);
         bool aceptable= diferencia<0.00001;
