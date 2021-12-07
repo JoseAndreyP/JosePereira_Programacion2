@@ -5,6 +5,7 @@
 using namespace std;
 
 namespace {
+    //Test de metodo ObtenerInformacion
     TEST(PersonaTest, Prueba_ObtenerInformacion) {
         
         Persona PersonaDePrueba { 15, "Jose", "Pereira","joanPe@gmail.com" };

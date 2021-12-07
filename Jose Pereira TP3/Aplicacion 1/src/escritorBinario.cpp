@@ -52,6 +52,7 @@ void EscritorBinario::EscribirTexto() {
 void EscritorBinario::AgregarPersona(Persona &Persona) {
     archivoSalida.write((char *) &Persona, sizeof(Persona));
 }
+/*ObtenerPersona: Obtiene una Persona de la lista */
 Persona EscritorBinario::obtenerPersona(int posicion){
 
     return listaPersonas[posicion];

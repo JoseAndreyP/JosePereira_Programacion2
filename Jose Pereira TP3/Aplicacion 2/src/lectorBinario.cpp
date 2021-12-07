@@ -160,7 +160,7 @@ Persona LectorBinario::buscarPersonaPosicion(int posicionBuscada){
     Persona *personaBuscada=new Persona(id,nombre,apellido,correo);
     return *personaBuscada;
 }
-
+//Metodo que cierra el lector
 void LectorBinario::Cerrar() {
     archivoEntrada.close();
 }

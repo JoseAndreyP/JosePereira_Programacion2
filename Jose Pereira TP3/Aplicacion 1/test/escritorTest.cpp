@@ -8,6 +8,7 @@
 using namespace std;
 
 namespace {
+    //Test de prueba para escribir texto
     TEST(EscritorTest, Prueba_EscribirTexto) {
         
         Persona PersonaDePrueba ( 15, "Jose", "Pereira","joanPe@gmail.com" );
@@ -26,7 +27,7 @@ namespace {
         
         EXPECT_EQ(PersonaLeida.ObtenerInformacion(), PersonaDePrueba.ObtenerInformacion());
     }
-
+    //Tes de prueba para cargar las personas
     TEST(EscritorTest, Prueba_CargarPersonas) {
         Persona PersonaDePrueba { 15, "Jose", "Pereira","joanPe@gmail.com" };
         EscritorBinario escritor {"prueba.dat"};
@@ -36,7 +37,7 @@ namespace {
         EXPECT_EQ(escritor.obtenerPersona(0).ObtenerInformacion(), PersonaDePrueba.ObtenerInformacion());
         
     }
-
+    //Test de excepcion para archivo no encontrado
     TEST(EscritorTest, Prueba_ExcepcionArchivoNoEncontrado) {
 
         Persona PersonaDePrueba { 15, "Jose", "Pereira","joanPe@gmail.com" };

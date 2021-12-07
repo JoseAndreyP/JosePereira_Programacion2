@@ -10,6 +10,8 @@
 using namespace std;
 
 namespace {
+
+    //Test de buscar la persona por posicion
     TEST(LectorTest, Prueba_BuscarPersonaPorPosicion) {
         
         Persona PersonaDePrueba ( 15, "Jose", "Pereira","joanPe@gmail.com" );
@@ -20,6 +22,7 @@ namespace {
        
         EXPECT_EQ(PersonaLeida.ObtenerInformacion(), PersonaDePrueba.ObtenerInformacion());
     }
+      //Test de buscar la persona por id
     TEST(LectorTest, Prueba_BuscarPersonaPorId) {
         
         Persona PersonaDePrueba ( 15, "Jose", "Pereira","joanPe@gmail.com" );
@@ -31,6 +34,7 @@ namespace {
         
         EXPECT_EQ(PersonaLeida.ObtenerInformacion(), PersonaDePrueba.ObtenerInformacion());
     }
+      //Test de buscar la persona por nombre
     TEST(LectorTest, Prueba_BuscarPersonaPorNombre) {
         
         Persona PersonaDePrueba ( 15, "Jose", "Pereira","joanPe@gmail.com" );
@@ -43,7 +47,7 @@ namespace {
         EXPECT_EQ(PersonaLeida.ObtenerInformacion(), PersonaDePrueba.ObtenerInformacion());
     }
     
-    
+      //Test de buscar la persona por apellido
 	TEST(LectorTest, Prueba_BuscarPersonaPorApellido) {
         
         Persona PersonaDePrueba ( 15, "Jose", "Pereira","joanPe@gmail.com" );
@@ -55,7 +59,7 @@ namespace {
         
         EXPECT_EQ(PersonaLeida.ObtenerInformacion(), PersonaDePrueba.ObtenerInformacion());
     }
-
+      //Test de excepcion para archivo no encontrado
     TEST(LectorTest, Prueba_ExcepcionArchivoNoEncontrado) {
 
         Persona PersonaDePrueba { 15, "Jose", "Pereira","joanPe@gmail.com" };
@@ -68,6 +72,7 @@ namespace {
         }, ExcepcionArchivoNoEncontrado);
 
     }
+    //Test de excepcion para error de lectura
     TEST(LectorTest, Prueba_ExcepcionErrorLeyendoPersona) {
 
         Persona PersonaDePrueba { 15, "Jose", "Pereira","joanPe@gmail.com" };
@@ -82,7 +87,9 @@ namespace {
 
     }
 
-        TEST(LectorTest, Prueba_ExcepcionPersonaNoExiste) {
+    //Test de excepcion para busqueda de persona no existente
+
+    TEST(LectorTest, Prueba_ExcepcionPersonaNoExiste) {
 
         Persona PersonaDePrueba { 15, "Jose", "Pereira","joanPe@gmail.com" };
 
