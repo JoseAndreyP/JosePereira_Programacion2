@@ -21,6 +21,6 @@ Persona::Persona() {
 }
 
 string Persona::ObtenerInformacion(){
-    string informacion= (char)id +" "+ (string)nombre +" "+ (string)apellido + " "+(string)correo;
+    string informacion= to_string(id) +" "+ (string)nombre +" "+ (string)apellido + " "+(string)correo;
     return informacion;
 }

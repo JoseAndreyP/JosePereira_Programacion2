@@ -9,7 +9,7 @@ int main() {
 
     EscritorBinario escritor("personas.dat");
 
-    escritor.cargarPersonas(cin, "personas.txt");
+    escritor.cargarPersonas("personas.txt");
 
     escritor.EscribirTexto();
     return 0;

@@ -13,81 +13,150 @@ LectorBinario::LectorBinario(string nombreArchivo) {
 
     if (!archivoEntrada.is_open())
     {
-        throw new ExcepcionArchivoNoEncontrado();
+        throw ExcepcionArchivoNoEncontrado();
     }
 }
 
-//Metodo de busqueda no lineal, recibe un istream de entrada y un nombre que es la persona a buscar por nombre.
+//Metodo de busqueda no lineal, recibe un nombre que es la persona a buscar por nombre.
 
 Persona LectorBinario::buscarPersonaNombre(string nombreBuscar){
+    int id;
+    char nombre[15];
+    char apellido[15];
+    char correo[50];
+    archivoEntrada.seekg(0, ios::end);
+    string linea {""};
+    long limiteBytes=archivoEntrada.tellg();
+    long punteroLectura=0;
+      archivoEntrada.seekg(punteroLectura);
+      archivoEntrada.read((char*)&id,sizeof(id));
+      archivoEntrada.read((char*)&nombre,sizeof(nombre));
+      archivoEntrada.read((char*)&apellido,sizeof(apellido));
+      archivoEntrada.read((char*)&correo,sizeof(correo));
+      punteroLectura+=84;
+    if(nombre==0){
+    	throw ExcepcionErrorLeyendoPersona();
+    }
+    while ((nombre!=nombreBuscar)&&(punteroLectura<limiteBytes)){
+      archivoEntrada.seekg(punteroLectura);
+      archivoEntrada.read((char*)&id,sizeof(id));
+      archivoEntrada.read((char*)&nombre,sizeof(nombre));
+      archivoEntrada.read((char*)&apellido,sizeof(apellido));
+      archivoEntrada.read((char*)&correo,sizeof(correo));
+      punteroLectura+=84;//itera usando el tamano de bytes de la clase persona
+    }    
+	if((nombre!=nombreBuscar)&&(punteroLectura>=limiteBytes)){
+    	throw ExcepcionPersonaNoExiste();
+    }
 
-   string linea {""};
-   string nombreEncontrado{0};
-   int limiteBytes=archivoEntrada.tellg();
-   int punteroLectura=4;
-    while ((nombreBuscar!=nombreEncontrado)||(punteroLectura<limiteBytes)){
-        archivoEntrada.seekg(punteroLectura);
-        char nombreLeido[15];
-        archivoEntrada.read(nombreLeido, 15);
-        nombreEncontrado=nombreLeido;
-        punteroLectura+=84;//itera usando el tamano de bytes de la clase persona(Posible error con punteroLectura)
+    Persona *personaBuscada=new Persona(id,nombre,apellido,correo);
+    return *personaBuscada;
+}
+//Metodo de busqueda no lineal, recibe un apellido que es la persona a buscar por apellido.
+
+Persona LectorBinario::buscarPersonaApellido(string apellidoBuscar){
+    int id;
+    char nombre[15];
+    char apellido[15];
+    char correo[50];
+    archivoEntrada.seekg(0, ios::end);
+    string linea {""};
+    long limiteBytes=archivoEntrada.tellg();
+    long punteroLectura=0;
+      archivoEntrada.seekg(punteroLectura);
+      archivoEntrada.read((char*)&id,sizeof(id));
+      archivoEntrada.read((char*)&nombre,sizeof(nombre));
+      archivoEntrada.read((char*)&apellido,sizeof(apellido));
+      archivoEntrada.read((char*)&correo,sizeof(correo));
+      punteroLectura+=84;
+      
+	if(apellido==0){
+    	throw ExcepcionErrorLeyendoPersona();
     }
-        Persona personaBuscada();
-    if(nombreBuscar==nombreEncontrado){
-        punteroLectura-4;//resto 4 para ubicarse a la id
-        archivoEntrada.seekg(punteroLectura-sizeof(Persona));
-        archivoEntrada.read((char*)&personaBuscada,sizeof(Persona));//-sizeof(Persona) porque el while suma por defecto esa cantidad
-    }else{
-        throw new ExcepcionPersonaNoExiste();
+    while ((apellido!=apellidoBuscar)&&(punteroLectura<limiteBytes)){
+      archivoEntrada.seekg(punteroLectura);
+      archivoEntrada.read((char*)&id,sizeof(id));
+      archivoEntrada.read((char*)&nombre,sizeof(nombre));
+      archivoEntrada.read((char*)&apellido,sizeof(apellido));
+      archivoEntrada.read((char*)&correo,sizeof(correo));
+      punteroLectura+=84;//itera usando el tamano de bytes de la clase persona
     }
-    return personaBuscada();
+    if((apellidoBuscar!=apellido)&&(punteroLectura>=limiteBytes)){
+    	throw ExcepcionPersonaNoExiste();
+    }
+
+    Persona *personaBuscada=new Persona(id,nombre,apellido,correo);
+    return *personaBuscada;
 }
 
 //Metodo de busqueda no lineal, recibe un istream de entrada y una id que es la persona a buscar por identificacion.
 
-Persona LectorBinario::buscarPersonaId(int id){
- string linea {""};
-   int idEncontrada{0};
-   int limiteBytes=archivoEntrada.tellg();
-   int punteroLectura=0;
-    while ((id!=idEncontrada)||(punteroLectura<limiteBytes)){
-        archivoEntrada.seekg(punteroLectura);
-        char idLeida[4];
-        archivoEntrada.read(idLeida, 4);
-        idEncontrada=(int)idLeida;//Conversion de tipo char a int mediante casting
-        punteroLectura+=sizeof(Persona);//itera usando el tamano de bytes de la clase persona
+Persona LectorBinario::buscarPersonaId(int idBuscada){
+
+    int id;
+    char nombre[15];
+    char apellido[15];
+    char correo[50];
+    archivoEntrada.seekg(0, ios::end);
+    string linea {""};
+    long limiteBytes=archivoEntrada.tellg();
+    long punteroLectura=0;
+
+      archivoEntrada.seekg(punteroLectura);
+      archivoEntrada.read((char*)&id,sizeof(id));
+      archivoEntrada.read((char*)&nombre,sizeof(nombre));
+      archivoEntrada.read((char*)&apellido,sizeof(apellido));
+      archivoEntrada.read((char*)&correo,sizeof(correo));
+      punteroLectura+=84;
+    if(id==0){
+    	throw ExcepcionErrorLeyendoPersona();
     }
-        Persona personaBuscada();
-    if(idEncontrada==id){
-        archivoEntrada.seekg(punteroLectura-sizeof(Persona));
-        archivoEntrada.read((char*)&personaBuscada,sizeof(Persona));
-    }else{
-        throw new ExcepcionPersonaNoExiste();
+    while ((idBuscada!=id)&&(punteroLectura<limiteBytes)){
+      archivoEntrada.seekg(punteroLectura);
+      archivoEntrada.read((char*)&id,sizeof(id));
+      archivoEntrada.read((char*)&nombre,sizeof(nombre));
+      archivoEntrada.read((char*)&apellido,sizeof(apellido));
+      archivoEntrada.read((char*)&correo,sizeof(correo));
+      punteroLectura+=84;//itera usando el tamano de bytes de la clase persona
     }
-    return personaBuscada();
+    if((idBuscada!=id)&&(punteroLectura>=limiteBytes)){
+    	throw ExcepcionPersonaNoExiste();
+    }
+     
+    
+
+    Persona *personaBuscada=new Persona(id,nombre,apellido,correo);
+    return *personaBuscada;
 }
 //Metodo de busqueda por posicion no lineal, recibe un istream de entrada y una id que es la persona a buscar por identificacion.
 
 Persona LectorBinario::buscarPersonaPosicion(int posicionBuscada){
-    if(posicionBuscada==0){
-        throw new ExcepcionPersonaNoExiste();
+    if(posicionBuscada<=0){
+      throw ExcepcionPersonaNoExiste();
     }
+    int id;
+    char nombre[15];
+    char apellido[15];
+    char correo[50];
+    archivoEntrada.seekg(0, ios::end);
     string linea {""};
-    int posicionEncontrada=1;
-    int limiteBytes=archivoEntrada.tellg();;
-    int punteroLectura=0;
-    while ((posicionBuscada!=posicionEncontrada)||(punteroLectura<limiteBytes)){
-        punteroLectura+=sizeof(Persona);//itera usando el tamano de bytes de la clase persona
-        ++posicionEncontrada;
-    }
+    long limiteBytes=archivoEntrada.tellg();
+    long punteroLectura=(posicionBuscada)*sizeof(Persona);
     if(punteroLectura>limiteBytes){
-        throw new ExcepcionPersonaNoExiste();
+    	throw ExcepcionPersonaNoExiste();
     }
-    Persona personaBuscada();
-    archivoEntrada.seekg(punteroLectura-sizeof(Persona));//-sizeof(Persona) porque el while suma por defecto esa cantidad
-    archivoEntrada.read((char*)&personaBuscada,sizeof(Persona));
     
-    return personaBuscada();
+    archivoEntrada.seekg(punteroLectura);
+    archivoEntrada.read((char*)&id,sizeof(id));
+    archivoEntrada.read((char*)&nombre,sizeof(nombre));
+    archivoEntrada.read((char*)&apellido,sizeof(apellido));
+    archivoEntrada.read((char*)&correo,sizeof(correo));
+    if(id==0){
+    	throw ExcepcionErrorLeyendoPersona();
+    }
+    
+    Persona *personaBuscada=new Persona(id,nombre,apellido,correo);
+    return *personaBuscada;
 }
 
 void LectorBinario::Cerrar() {

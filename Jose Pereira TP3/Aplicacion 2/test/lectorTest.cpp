@@ -42,6 +42,18 @@ namespace {
         EXPECT_EQ(PersonaLeida.ObtenerInformacion(), PersonaDePrueba.ObtenerInformacion());
     }
     
+    
+	TEST(LectorTest, Prueba_BuscarPersonaPorApellido) {
+        
+        Persona PersonaDePrueba ( 15, "Jose", "Pereira","joanPe@gmail.com" );
+
+        LectorBinario lector ("prueba.dat");
+
+        Persona PersonaLeida= lector.buscarPersonaApellido("Pereira");
+       
+        
+        EXPECT_EQ(PersonaLeida.ObtenerInformacion(), PersonaDePrueba.ObtenerInformacion());
+    }
 
     TEST(LectorTest, Prueba_ExcepcionArchivoNoEncontrado) {
 

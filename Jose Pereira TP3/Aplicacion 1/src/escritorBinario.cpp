@@ -1,5 +1,7 @@
-#include "escritorBinario.h"
+
 #include "./excepciones/excepcionArchivoNoEncontrado.h"
+
+#include "escritorBinario.h"
 #include <sstream>
 
 using namespace std;
@@ -13,35 +15,31 @@ EscritorBinario::EscritorBinario(string nombre) {
 
     if (!archivoSalida.is_open())
     {
-        throw new ExcepcionArchivoNoEncontrado();
+        throw ExcepcionArchivoNoEncontrado();
     }
 }
 /*
 cargarPersonas: recibe una string que es el nombre del archivo a buscar leer y un istream encargado de
 recibir un flujo de datos. Despues agrega a la listaPersonas los datos correspondientes.
 */
-istream& EscritorBinario::cargarPersonas(istream& i,string nombreArchivo){
+void EscritorBinario::cargarPersonas(string nombreArchivo){
     ifstream archivoEntrada;
-    archivoEntrada.open(nombreArchivo, ios::in);
+    archivoEntrada.open(nombreArchivo, ifstream::in);
 
     if (!archivoEntrada.is_open())
     {
-        throw new ExcepcionArchivoNoEncontrado();
+        throw ExcepcionArchivoNoEncontrado();
     }
-   string linea {""};
     int id {0};
     string nombre {0};
     string apellido {0};
     string correo {0};
 
-    istringstream stream(linea); 
-
-    while (getline(i, linea)) {
-        stream >> id >> nombre>> apellido>> correo;
+    while (archivoEntrada >> id >> nombre>> apellido>> correo) {
+        
         Persona personaNueva {id, nombre, apellido, correo};
         listaPersonas.push_back(personaNueva);
     }
-    return i;
 }
 
 /* EscribirTexto: Agrega todos los elementos de ListaPersonas al archivo Binario .dat */

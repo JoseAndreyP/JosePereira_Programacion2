@@ -30,7 +30,7 @@ namespace {
     TEST(EscritorTest, Prueba_CargarPersonas) {
         Persona PersonaDePrueba { 15, "Jose", "Pereira","joanPe@gmail.com" };
         EscritorBinario escritor {"prueba.dat"};
-        escritor.cargarPersonas(cin, "pruebaTexto.txt");
+        escritor.cargarPersonas("pruebaTexto.txt");
         escritor.Cerrar();
 
         EXPECT_EQ(escritor.obtenerPersona(0).ObtenerInformacion(), PersonaDePrueba.ObtenerInformacion());
@@ -44,7 +44,7 @@ namespace {
         EXPECT_THROW({
 
             EscritorBinario escritor {"prueba.dat"};
-            escritor.cargarPersonas(cin, "pruebaTextoImaginaria.txt");
+            escritor.cargarPersonas( "pruebaTextoImaginaria.txt");
             escritor.Cerrar();
 
         }, ExcepcionArchivoNoEncontrado);
