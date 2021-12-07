@@ -4,9 +4,7 @@
 //Clase del Servicio Postal.
 class Postal: public Envio{
     private:
-        int distancia;
         int clase;
-        double peso;
     public:
         Postal(double, int, int);
         virtual double calcularCosto();

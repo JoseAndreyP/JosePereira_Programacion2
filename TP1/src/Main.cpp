@@ -12,7 +12,6 @@ int main(){
     int distancia;
     int clase=4;
     std::vector<Envio *> arregloEnvios;
-
     while(continuar==1){
         while((tipo!=1)&&(tipo!=2)){
             std::cout<<"Digite el tipo de envio que desea"<<std::endl<<"1.ServicioPostal"<<std::endl<<"2.Fedex"<<std::endl;
@@ -55,7 +54,7 @@ int main(){
     }
     //Lineas sacadas del enunciado de la tarea
     for (Envio* envio : arregloEnvios){
-        costoTotal += envio->enviar();
+        costoTotal += envio->calcularCosto();
     }
     std::cout << "El monto total de los envíos es de " << costoTotal << std::endl;
 
