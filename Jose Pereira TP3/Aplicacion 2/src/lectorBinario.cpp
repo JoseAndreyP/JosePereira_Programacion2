@@ -1,6 +1,8 @@
 #include "lectorBinario.h"
 #include "./excepciones/excepcionArchivoNoEncontrado.h"
 #include "./excepciones/excepcionPersonaNoExiste.h"
+#include "./excepciones/excepcionErrorLeyendoPersona.h"
+
 
 
 using namespace std;
@@ -34,7 +36,7 @@ Persona LectorBinario::buscarPersonaNombre(string nombreBuscar){
       archivoEntrada.read((char*)&apellido,sizeof(apellido));
       archivoEntrada.read((char*)&correo,sizeof(correo));
       punteroLectura+=84;
-    if(nombre==0){
+    if(nombre==to_string(0)){
     	throw ExcepcionErrorLeyendoPersona();
     }
     while ((nombre!=nombreBuscar)&&(punteroLectura<limiteBytes)){
@@ -70,7 +72,7 @@ Persona LectorBinario::buscarPersonaApellido(string apellidoBuscar){
       archivoEntrada.read((char*)&correo,sizeof(correo));
       punteroLectura+=84;
       
-	if(apellido==0){
+	if(apellido==to_string(0)){
     	throw ExcepcionErrorLeyendoPersona();
     }
     while ((apellido!=apellidoBuscar)&&(punteroLectura<limiteBytes)){

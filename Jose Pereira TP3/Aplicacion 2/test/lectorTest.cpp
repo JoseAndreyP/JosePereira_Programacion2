@@ -5,6 +5,7 @@
 #include "../src/lectorBinario.h"
 #include "../src/excepciones/excepcionPersonaNoExiste.h"
 #include "../src/excepciones/excepcionArchivoNoEncontrado.h"
+#include "./excepciones/excepcionErrorLeyendoPersona.h"
 #include <fstream>
 using namespace std;
 
@@ -65,6 +66,19 @@ namespace {
             lector.Cerrar();
 
         }, ExcepcionArchivoNoEncontrado);
+
+    }
+    TEST(LectorTest, Prueba_ExcepcionErrorLeyendoPersona) {
+
+        Persona PersonaDePrueba { 15, "Jose", "Pereira","joanPe@gmail.com" };
+
+        EXPECT_THROW({
+
+            LectorBinario lector {"pruebaErronea.dat"};
+            Persona PersonaLeida= lector.buscarPersonaNombre("Desconocido");
+            lector.Cerrar();
+
+        }, ExcepcionErrorLeyendoPersona);
 
     }
 

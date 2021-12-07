@@ -15,6 +15,7 @@ class Persona
     public:
     Persona(int id, string nombre, string apellido, string correo);
     Persona();
+    ~Persona();
     string ObtenerInformacion();
 };
 

@@ -14,6 +14,10 @@ class LectorBinario {
     public:
     LectorBinario(std::string nombre);
     Persona buscarPersonaPosicion(int posicion);
+    Persona buscarPersonaNombre(string nombre);
+    Persona buscarPersonaApellido(string apellido);
+    Persona buscarPersonaId(int id);
+
     void Cerrar();
 
 };
