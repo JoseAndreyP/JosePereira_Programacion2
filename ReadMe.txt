@@ -1,4 +1,4 @@
-Este programa es la tarea Programada #3 de José Andrey Pereira Zúñiga(C05869)
+Este programa es la tarea Programada #4 de José Andrey Pereira Zúñiga(C05869)
 para el curso de Programación 2. Se adjuntan algunas instrucciones de compilación
 para la correcta ejecucion del archivo:
 
