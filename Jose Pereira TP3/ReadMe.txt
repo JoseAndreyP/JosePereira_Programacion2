@@ -5,7 +5,9 @@ para la correcta ejecucion del archivo:
 1.Es necesario tener el programa Visual Studio Code para ejecutarlo de forma
 exitosa como se realizó durante todo el desarrollo de la misma en su versión 
 C++11. También es de gran relevancia que que mantengan las 4 carpetas con los
-nombres respectivos y que nada de la estructura se modifique.
+nombres respectivos y que nada de la estructura se modifique.(Unica excepción de
+la carpeta ".vscode" que llega a cambiar de acuerdo a la configuración interna
+de la computadora.)
 
 2.Abriendose VSCode, se debe abrir el archivo "Main.cpp" y despues seguir al
 botón izquierdo que indica "Run and Debug" para proceder a ejecutarlo. Se
